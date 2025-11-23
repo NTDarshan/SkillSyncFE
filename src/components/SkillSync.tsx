@@ -4,6 +4,7 @@ import { Upload, FileText, User, Mail, Award, Clock, CheckCircle, XCircle, Loade
 interface ResumeResponse {
   candidate_name: string;
   candidate_email: string;
+  candidate_phone: string;
   resume_skills: string[];
   required_skills: string[];
   matching_skills: string[];
@@ -97,6 +98,9 @@ const SkillSync: React.FC = () => {
     formData.append('job_description', jobDescription);
     
     try {
+     //local
+      //let api_url = 'http://127.0.0.1:8000/upload'
+       //dev
       let api_url = 'https://skillsync-ozan.onrender.com/upload'
       const response = await fetch(api_url, {
         method: 'POST',
@@ -234,6 +238,7 @@ const SkillSync: React.FC = () => {
               <div>
                 <p className="text-lg"><span className="text-gray-400">Name:</span> {result.candidate_name}</p>
                 <p className="text-lg"><span className="text-gray-400">Email:</span> {result.candidate_email}</p>
+                <p className="text-lg"><span className="text-gray-400">Phone:</span> {result.candidate_phone}</p>
               </div>
               <div className="text-center">
                 <div className={`text-4xl font-bold ${getScoreColor(result.final_score)} mb-2`}>
